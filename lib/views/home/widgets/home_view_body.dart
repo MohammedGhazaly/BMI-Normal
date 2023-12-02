@@ -13,6 +13,7 @@ class HomeViewBody extends StatefulWidget {
 
 class _HomeViewBodyState extends State<HomeViewBody> {
   bool isMale = true;
+  double userHeight = 150;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,7 +40,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Expanded(
@@ -57,11 +58,41 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            CustomSliderWidget(),
-            SizedBox(
+            CustomSliderWidget(
+              decrementFunction: () {
+                if (userHeight == 0) {
+                  return;
+                }
+                userHeight -= 0.1;
+
+                userHeight = double.parse(
+                  userHeight.toStringAsFixed(1),
+                );
+                setState(() {});
+              },
+              incrementFunction: () {
+                if (userHeight == 300) {
+                  return;
+                }
+                userHeight += 0.1;
+
+                userHeight = double.parse(
+                  userHeight.toStringAsFixed(1),
+                );
+                setState(() {});
+              },
+              height: userHeight,
+              onChangedFunction: (height) {
+                userHeight = double.parse(
+                  height.toStringAsFixed(1),
+                );
+                setState(() {});
+              },
+            ),
+            const SizedBox(
               height: 16,
             ),
             Row(
@@ -73,7 +104,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   text: "Age",
                   value: 18,
                 )),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Expanded(
@@ -86,7 +117,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             SizedBox(
@@ -100,12 +131,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   backgroundColor: kRedColor,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   "Calculate",
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
           ],

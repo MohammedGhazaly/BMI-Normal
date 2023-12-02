@@ -2,8 +2,16 @@ import 'package:bmi_normal/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomSliderWidget extends StatelessWidget {
+  final double height;
+  final void Function(double)? onChangedFunction;
+  final Function()? incrementFunction;
+  final Function()? decrementFunction;
   const CustomSliderWidget({
     super.key,
+    required this.height,
+    this.onChangedFunction,
+    required this.incrementFunction,
+    required this.decrementFunction,
   });
 
   @override
@@ -22,16 +30,59 @@ class CustomSliderWidget extends StatelessWidget {
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           Text(
-            "300",
+            height.toString(),
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           Slider(
             min: 0,
             max: 300,
-            value: 150,
+            value: height,
             activeColor: kRedColor,
-            onChanged: (value) {},
+            onChanged: onChangedFunction,
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: incrementFunction,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: kRedColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.add_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 32,
+              ),
+              InkWell(
+                onTap: decrementFunction,
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 10),
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: kRedColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.minimize_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
