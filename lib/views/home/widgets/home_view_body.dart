@@ -4,9 +4,15 @@ import 'package:bmi_normal/views/home/widgets/custom_slider_widget.dart';
 import 'package:bmi_normal/views/home/widgets/gender_container.dart';
 import 'package:flutter/material.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  bool isMale = true;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,19 +27,32 @@ class HomeViewBody extends StatelessWidget {
             Row(
               children: [
                 Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      isMale = true;
+                      setState(() {});
+                    },
                     child: GenderContainer(
-                  isSelected: true,
-                  gender: "Male",
-                  icon: Icons.male_rounded,
-                )),
+                      isSelected: isMale,
+                      gender: "Male",
+                      icon: Icons.male_rounded,
+                    ),
+                  ),
+                ),
                 SizedBox(
                   width: 8,
                 ),
                 Expanded(
-                  child: GenderContainer(
-                    isSelected: false,
-                    gender: "Female",
-                    icon: Icons.female_rounded,
+                  child: InkWell(
+                    onTap: () {
+                      isMale = false;
+                      setState(() {});
+                    },
+                    child: GenderContainer(
+                      isSelected: !isMale,
+                      gender: "Female",
+                      icon: Icons.female_rounded,
+                    ),
                   ),
                 ),
               ],
