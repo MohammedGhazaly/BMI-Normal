@@ -149,7 +149,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 onPressed: () {
                   Navigator.pushNamed(context, ResutlView.routeName,
                       arguments: UserModel(
-                          gender: isMale ? "Male" : "Femail",
+                          gender: isMale ? "male" : "female",
                           height: userHeight,
                           weight: weight,
                           age: age));

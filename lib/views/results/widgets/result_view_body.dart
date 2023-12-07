@@ -31,15 +31,15 @@ class ResultViewBody extends StatelessWidget {
         children: [
           Text(
             "BMI results",
-            style: TextStyle(fontSize: 18, color: kBlueColor),
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           Text(
             bmi.toStringAsFixed(1),
-            style: TextStyle(fontSize: 20, color: kBlueColor),
+            style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           Text(
             result,
-            style: TextStyle(fontSize: 24, color: kRedColor),
+            style: TextStyle(fontSize: 24, color: Colors.white),
           ),
         ],
       ),
