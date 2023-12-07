@@ -1,4 +1,3 @@
-import 'package:bmi_normal/constants.dart';
 import 'package:bmi_normal/views/home/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title: Text("BMI Calculator"),
-        backgroundColor: Colors.white,
-        foregroundColor: kBlueColor,
+        title: const Text("BMI Calculator"),
       ),
       body: HomeViewBody(),
     );

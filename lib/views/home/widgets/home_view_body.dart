@@ -1,7 +1,9 @@
 import 'package:bmi_normal/constants.dart';
+import 'package:bmi_normal/models/user_model.dart';
 import 'package:bmi_normal/views/home/widgets/age_weight_container.dart';
 import 'package:bmi_normal/views/home/widgets/custom_slider_widget.dart';
 import 'package:bmi_normal/views/home/widgets/gender_container.dart';
+import 'package:bmi_normal/views/results/result_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -14,6 +16,8 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   bool isMale = true;
   double userHeight = 150;
+  int age = 20;
+  int weight = 60;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -99,20 +103,32 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               children: [
                 Expanded(
                     child: AgeWeightContainer(
-                  decrementFunction: () {},
-                  incrementFunction: () {},
+                  decrementFunction: () {
+                    setState(() {});
+                    age--;
+                  },
+                  incrementFunction: () {
+                    setState(() {});
+                    age++;
+                  },
                   text: "Age",
-                  value: 18,
+                  value: age,
                 )),
                 const SizedBox(
                   width: 8,
                 ),
                 Expanded(
                   child: AgeWeightContainer(
-                    decrementFunction: () {},
-                    incrementFunction: () {},
+                    decrementFunction: () {
+                      weight--;
+                      setState(() {});
+                    },
+                    incrementFunction: () {
+                      weight++;
+                      setState(() {});
+                    },
                     text: "Weight",
-                    value: 50,
+                    value: weight,
                   ),
                 )
               ],
@@ -130,7 +146,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                   foregroundColor: Colors.white,
                   backgroundColor: kRedColor,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, ResutlView.routeName,
+                      arguments: UserModel(
+                          gender: isMale ? "Male" : "Femail",
+                          height: userHeight,
+                          weight: weight,
+                          age: age));
+                },
                 child: const Text(
                   "Calculate",
                 ),

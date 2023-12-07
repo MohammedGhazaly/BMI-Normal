@@ -44,7 +44,7 @@ class AgeWeightContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: incrementFunction,
                 child: Container(
                   width: 40,
                   height: 40,
@@ -61,7 +61,7 @@ class AgeWeightContainer extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: decrementFunction,
                 child: Container(
                   padding: EdgeInsets.only(bottom: 10),
                   width: 40,
