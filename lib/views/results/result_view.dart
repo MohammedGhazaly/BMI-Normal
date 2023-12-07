@@ -12,8 +12,8 @@ class ResutlView extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserModel userModel =
         ModalRoute.of(context)!.settings.arguments as UserModel;
-    String bmi = ((userModel.weight) / pow(userModel.height / 100, 2))
-        .toStringAsFixed(2);
+    double bmi = (userModel.weight) / pow(userModel.height / 100, 2);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Results"),
