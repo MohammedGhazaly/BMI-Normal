@@ -2,7 +2,8 @@ import 'package:bmi_normal/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultViewBody extends StatelessWidget {
-  const ResultViewBody({super.key});
+  final String bmi;
+  const ResultViewBody({super.key, required this.bmi});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class ResultViewBody extends StatelessWidget {
             style: TextStyle(fontSize: 18, color: kBlueColor),
           ),
           Text(
-            "20",
+            bmi,
             style: TextStyle(fontSize: 20, color: kBlueColor),
           ),
           Text(
